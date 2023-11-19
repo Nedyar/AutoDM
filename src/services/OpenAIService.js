@@ -71,7 +71,16 @@ async function checkRunStatus(openai, threadId, createRunId) {
 		return checkRunStatus(openai, threadId, createRunId);
 	} else {
 		const messages = await openai.beta.threads.messages.list(threadId);
-		return messages.data;
+
+		let response = [];
+		let datas = messages.data;
+		for (let dataid in datas) {
+			let contents = datas[dataid].content;
+			for (let contentid in contents) {
+				response.push(contents[contentid].text.value);
+			}
+		}
+		return response;
 	}
 }
 
