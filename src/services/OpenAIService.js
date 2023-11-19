@@ -58,6 +58,18 @@ export class OpenAIService {
 		const response = await checkRunStatus(this.openai, this.thread.id, this.run.id);
 		return response;
 	}
+
+	async continue(playersPromp) {
+		await this.openai.beta.threads.messages.create(this.thread.id, {
+			role: "user",
+			content: playersPromp,
+		});
+		this.run = await this.openai.beta.threads.runs.create(this.thread.id, {
+			assistant_id: this.assistant.id,
+		});
+		const response = await checkRunStatus(this.openai, this.thread.id, this.run.id);
+		return response;
+	}
 }
 
 async function checkRunStatus(openai, threadId, createRunId) {
@@ -77,7 +89,7 @@ async function checkRunStatus(openai, threadId, createRunId) {
 		for (let dataid in datas) {
 			let contents = datas[dataid].content;
 			for (let contentid in contents) {
-				response.push(contents[contentid].text.value);
+				response.push({ role: datas[dataid].role, text: contents[contentid].text.value });
 			}
 		}
 		return response;
