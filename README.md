@@ -39,13 +39,13 @@ Before starting the installation, please ensure that you have Node.js and npm co
 
 Before running the API, make sure to include the `secrets` folder in the project directory. This folder must contain the .env file, where there which must be like this:
 
-    ```shell
-    NAME = "AutoDM"
-    API_KEY = <YOUR OPEN AI KEY>
-    TYPE = "code_interpreter"
-    MODEL = "gpt-3.5-turbo-1106"
+```shell
+NAME = "AutoDM"
+API_KEY = <YOUR OPEN AI KEY>
+TYPE = "code_interpreter"
+MODEL = "gpt-3.5-turbo-1106"
 
-    ```
+```
 
 ## Usage
 
@@ -55,4 +55,4 @@ To start the API, run the following command:
 npm start
 ```
 
-This will start the development server, and the API will be available at [http://localhost:3000](http://localhost:3000).
+This will start the server, and the API will be available at [http://localhost:3000](http://localhost:3000).
