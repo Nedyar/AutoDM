@@ -28,7 +28,7 @@ Before starting the installation, please ensure that you have Node.js and npm co
     ```
 2. Navigate to the project directory.
     ```shell
-    cd YouCards
+    cd AutoDM
     ```
 3. Install the dependencies using npm.
     ```shell
