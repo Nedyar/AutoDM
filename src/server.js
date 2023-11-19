@@ -1,16 +1,14 @@
 /* DEPENDENCIES */
-import debug from "debug";
 import http from "http";
 
 /* APP MODULES */
-import app from "./app";
+import app from "./app.js";
 
-debug("servidor:server");
 app.set("port", 3000);
 
 const server = http.createServer(app);
 
-server.listen(port);
+server.listen(3000);
 server.on("error", (error) => {
 	if (error.syscall !== "listen") {
 		throw error;
@@ -33,5 +31,5 @@ server.on("error", (error) => {
 server.on("listening", () => {
 	const addr = server.address();
 	const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr?.port;
-	debug("Listening on " + bind);
+	console.debug("Listening on " + bind);
 });

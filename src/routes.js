@@ -1,24 +1,26 @@
 import express from "express";
 
 // PROCEDURES
-import procedure1 from "./procedures/page1.js";
+import play from "./procedures/play.js";
 
-const page1 = "page1";
+const pageGame = "play";
 
 export default () => {
 	const router = express.Router();
 
-	router.route(`/${page1}`).get((req, res, next) => {
-		procedure1()
+	router.route(`/${pageGame}`).get((req, res, next) => {
+		play([{ name: "Juan", class: "Paladin", raze: "Human", lvl: "3" }])
 			.then((response) => {
 				if (response["success"]) {
-					return res.json({});
+					return res.json(response.response);
 				} else {
-					return next(console.log("PROCEDURE DID NOT SUCCESS: " + page1));
+					console.error("PROCEDURE DID NOT SUCCESS: " + pageGame);
+					return next();
 				}
 			})
 			.catch((error) => {
-				return next(console.log("ROUTE ERROR: " + page1));
+				console.error("ROUTE ERROR: " + pageGame);
+				return next();
 			});
 	});
 

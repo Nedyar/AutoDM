@@ -5,11 +5,11 @@ import express from "express";
 import serveFavicon from "serve-favicon";
 
 /* IMPORT ROUTE MANAGEMENT */
-import appRouter from "./router";
+import appRouter from "./routes.js";
 
 /* INITIALIZE .env */
 //dotenv.config()
-dotenv.config({ path: "./secrets/env/.env" });
+dotenv.config({ path: "./secrets/.env" });
 
 /* INIT APP */
 const app = express();
@@ -19,7 +19,7 @@ app.use(express.json({ limit: "1500kb" }));
 app.use(express.urlencoded({ extended: true }));
 
 /* ADD FAVICON */
-app.use(serveFavicon(path.join(__dirname, "./../public", "favicon.ico")));
+app.use(serveFavicon(path.join("./public", "favicon.ico")));
 
 /* ROUTES MANAGER */
 app.use("/", appRouter());
