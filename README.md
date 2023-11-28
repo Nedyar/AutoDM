@@ -37,7 +37,7 @@ Before starting the installation, please ensure that you have Node.js and npm co
 
 ## Configuration
 
-Before running the API, make sure to include the `secrets` folder in the project directory. This folder must contain the .env file, where there which must be like this:
+Before running the API, make sure to include the `secrets` folder in the project directory. This folder must contain the .env file, which must be like this:
 
 ```shell
 NAME = "AutoDM"
